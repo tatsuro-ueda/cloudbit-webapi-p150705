@@ -1,5 +1,4 @@
 require 'sinatra/base'
-require 'rest-client'
 require 'net/http'
 
 class Server < Sinatra::Base
@@ -12,11 +11,6 @@ class Server < Sinatra::Base
   request['Authorization'] = "Bearer #{ENV['THERMO_CLOUDBIT_TOKEN']}"
 
   get '/' do
-    # RestClient.get \
-    #   "https://api-http.littlebitscloud.cc/devices/#{ENV['THERMO_CLOUDBIT_DEVICE_ID']}/input",
-    #   Accept: "application/vnd.littlebits.v2+json",
-    #   Authorization: "Bearer #{ENV['THERMO_CLOUDBIT_TOKEN']}"
-
     Net::HTTP.start(uri.host, uri.port,
       :use_ssl => uri.scheme == 'https') do |http|
       http.request request do |response|
@@ -25,5 +19,5 @@ class Server < Sinatra::Base
         end
       end
     end
-  end 
+  end
 end
