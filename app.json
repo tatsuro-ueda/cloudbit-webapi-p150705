@@ -10,4 +10,5 @@
     "THERMO_CLOUDBIT_TOKEN": {
       "description": "Fill in cloudbit token here"
     }
+  }
 }
