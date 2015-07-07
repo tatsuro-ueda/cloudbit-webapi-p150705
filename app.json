@@ -1,0 +1,13 @@
+{
+  "name": "Thermomater",
+  "description": "Sample app using Cloudbit",
+  "repository": "https://github.com/weed/thermometer-cloudbit-p150705",
+  "keywords": ["ruby", "iot"],
+  "env": {
+    "THERMO_CLOUDBIT_DEVICE_ID": {
+      "description": "Fill in device id here"
+    },
+    "THERMO_CLOUDBIT_TOKEN": {
+      "description": "Fill in cloudbit token here"
+    }
+}
