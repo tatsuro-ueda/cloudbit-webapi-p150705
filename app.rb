@@ -1,7 +1,12 @@
 require 'sinatra/base'
 require 'net/http'
+require 'sinatra/cross_origin'
 
 class Server < Sinatra::Base
+  register Sinatra::CrossOrigin
+  enable :cross_origin
+  # cross_origin :allow_origin => 'http://swagger.io'
+
   uri = URI(
     "https://api-http.littlebitscloud.cc/devices/#{ENV['THERMO_CLOUDBIT_DEVICE_ID']}/input"
   )
