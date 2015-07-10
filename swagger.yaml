@@ -41,14 +41,14 @@ paths:
           schema:
             type: array
             items:
-              $ref: '#/definitions/Product'
+              $ref: '#/definitions/Input'
         default:
           description: Unexpected error
           schema:
             $ref: '#/definitions/Error'
   /estimates/price:
     get:
-      summary: Price Estimates
+      summary: 動きません
       description: |
         The Price Estimates endpoint returns an estimated price range
         for each product offered at a given location. The price estimate is
@@ -98,7 +98,7 @@ paths:
             $ref: '#/definitions/Error'
   /estimates/time:
     get:
-      summary: Time Estimates
+      summary: 動きません
       description: The Time Estimates endpoint returns ETAs for all products offered at a given location, with the responses expressed as integers in seconds. We recommend that this endpoint be called every minute to provide the most accurate, up-to-date ETAs.
       parameters:
         - name: start_latitude
@@ -137,7 +137,7 @@ paths:
             $ref: '#/definitions/Error'
   /me:
     get:
-      summary: User Profile
+      summary: 動きません
       description: The User Profile endpoint returns information about the Uber user that has authorized with the application.
       tags:
         - User
@@ -152,7 +152,7 @@ paths:
             $ref: '#/definitions/Error'
   /history:
     get:
-      summary: User Activity
+      summary: 動きません
       description: The User Activity endpoint returns data about a user's lifetime activity with Uber. The response will include pickup locations and times, dropoff locations and times, the distance of past requests, and information about which products were requested.<br><br>The history array in the response will have a maximum length based on the limit parameter. The response value count may exceed limit, therefore subsequent API requests may be necessary.
       parameters:
         - name: offset
@@ -177,6 +177,12 @@ paths:
           schema:
             $ref: '#/definitions/Error'
 definitions:
+  Input:
+    properties:
+      percent:
+        type: number
+        description: CloudBitの入力値です。この値がそのまま温度を示します。
+  
   Product:
     properties:
       product_id:
@@ -257,6 +263,15 @@ definitions:
         type: array
         items:
           $ref: '#/definitions/Activity'
+  Error:
+    properties:
+      code:
+        type: integer
+        format: int32
+      message:
+        type: string
+      fields:
+        type: string
   Error:
     properties:
       code:
