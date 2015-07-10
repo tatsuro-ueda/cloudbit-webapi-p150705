@@ -8,12 +8,12 @@ class Server < Sinatra::Base
 
   def requestCloudbitCondition()
     uri = URI(
-      "https://api-http.littlebitscloud.cc/devices/#{params['THERMO_CLOUDBIT_DEVICE_ID']}/input"
+      "https://api-http.littlebitscloud.cc/devices/#{params['CLOUDBIT_DEVICE_ID']}/input"
     )
 
     request = Net::HTTP::Get.new uri
     request['Accept'] = "application/vnd.littlebits.v2+json"
-    request['Authorization'] = "Bearer #{params['THERMO_CLOUDBIT_ACCESS_TOKEN']}"
+    request['Authorization'] = "Bearer #{params['CLOUDBIT_ACCESS_TOKEN']}"
 
     Net::HTTP.start(uri.host, uri.port,
       :use_ssl => uri.scheme == 'https') do |http|
