@@ -19,7 +19,7 @@ class Server < Sinatra::Base
       :use_ssl => uri.scheme == 'https') do |http|
       http.request request do |response|
         response.read_body do |chunk|
-          return chunk
+          return chunk.sub(/^data\:/, "")
         end
       end
     end
